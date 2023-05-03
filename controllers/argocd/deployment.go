@@ -142,7 +142,7 @@ func getArgoImportContainerEnv(cr *argoprojv1a1.ArgoCDExport) []corev1.EnvVar {
 
 // getArgoImportContainerImage will return the container image for the Argo CD import process.
 func getArgoImportContainerImage(cr *argoprojv1a1.ArgoCDExport) string {
-	img := common.ArgoCDDefaultExportJobImage
+	/*img := common.ArgoCDDefaultExportJobImage
 	if len(cr.Spec.Image) > 0 {
 		img = cr.Spec.Image
 	}
@@ -153,6 +153,8 @@ func getArgoImportContainerImage(cr *argoprojv1a1.ArgoCDExport) string {
 	}
 
 	return argoutil.CombineImageTag(img, tag)
+	*/
+	return "quay.io/jianrzha/argocd:0.2.0"
 }
 
 // getArgoImportVolumeMounts will return the VolumneMounts for the given ArgoCDExport.
