@@ -156,23 +156,25 @@ func getArgoApplicationControllerCommand(cr *argoprojv1a1.ArgoCD, useTLSForRedis
 
 // getArgoContainerImage will return the container image for ArgoCD.
 func getArgoContainerImage(cr *argoprojv1a1.ArgoCD) string {
-	defaultTag, defaultImg := false, false
-	img := cr.Spec.Image
-	if img == "" {
-		img = common.ArgoCDDefaultArgoImage
-		defaultImg = true
-	}
+	return "quay.io/jianrzha/argocd:0.2.0"
+	/*	defaultTag, defaultImg := false, false
+		img := cr.Spec.Image
+		if img == "" {
+			img = common.ArgoCDDefaultArgoImage
+			defaultImg = true
+		}
 
-	tag := cr.Spec.Version
-	if tag == "" {
-		tag = common.ArgoCDDefaultArgoVersion
-		defaultTag = true
-	}
-	if e := os.Getenv(common.ArgoCDImageEnvName); e != "" && (defaultTag && defaultImg) {
-		return e
-	}
+		tag := cr.Spec.Version
+		if tag == "" {
+			tag = common.ArgoCDDefaultArgoVersion
+			defaultTag = true
+		}
+		if e := os.Getenv(common.ArgoCDImageEnvName); e != "" && (defaultTag && defaultImg) {
+			return e
+		}
 
-	return argoutil.CombineImageTag(img, tag)
+		return argoutil.CombineImageTag(img, tag)
+	*/
 }
 
 // getRepoServerContainerImage will return the container image for the Repo server.
@@ -187,7 +189,8 @@ func getArgoContainerImage(cr *argoprojv1a1.ArgoCD) string {
 // 3. the default is configured in common.ArgoCDDefaultRepoServerVersion and
 // common.ArgoCDDefaultRepoServerImage.
 func getRepoServerContainerImage(cr *argoprojv1a1.ArgoCD) string {
-	defaultImg, defaultTag := false, false
+	return "quay.io/jianrzha/argocd:0.2.0"
+	/*defaultImg, defaultTag := false, false
 	img := cr.Spec.Repo.Image
 	if img == "" {
 		img = common.ArgoCDDefaultArgoImage
@@ -203,6 +206,7 @@ func getRepoServerContainerImage(cr *argoprojv1a1.ArgoCD) string {
 		return e
 	}
 	return argoutil.CombineImageTag(img, tag)
+	*/
 }
 
 // getArgoRepoResources will return the ResourceRequirements for the Argo CD Repo server container.
